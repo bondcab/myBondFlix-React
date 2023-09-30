@@ -2941,46 +2941,42 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$98a3.prelude(module);
 
 try {
-//Imports react function for rendering react components to the DOM
+// 3.2 Imports react function for rendering react components to the DOM
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _client = require("react-dom/client");
-//Adds the scss file for bundling
+var _reactDom = require("react-dom");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+// 3.3 Adds the mainview component
+var _mainView = require("./components/MainView/main-view");
+//3.3 Adds the scss styling
 var _indexScss = require("./index.scss");
-const MyBondFlixApplication = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "myBond-flix",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: "Good morning"
-        }, void 0, false, {
-            fileName: "src/index.jsx",
-            lineNumber: 10,
-            columnNumber: 13
-        }, undefined)
-    }, void 0, false, {
+const App = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
         fileName: "src/index.jsx",
-        lineNumber: 9,
-        columnNumber: 9
+        lineNumber: 13,
+        columnNumber: 10
     }, undefined);
 };
-_c = MyBondFlixApplication;
-//Finds app root
-const container = document.querySelector("#root");
-const root = (0, _client.createRoot)(container);
-//Tells react to render your app in the root DOM element
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MyBondFlixApplication, {}, void 0, false, {
+_c = App;
+// 3.2 Finds app root
+const container = document.getElementById("root");
+const root = (0, _reactDom.createRoot)(container);
+// 3.2 Tells react to render your app in the root DOM element
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.jsx",
-    lineNumber: 20,
+    lineNumber: 21,
     columnNumber: 13
-}, undefined));
+}, undefined), container);
 var _c;
-$RefreshReg$(_c, "MyBondFlixApplication");
+$RefreshReg$(_c, "App");
 
   $parcel$ReactRefreshHelpers$98a3.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kKYUA"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom":"j6uA9","react":"21dqq","./components/MainView/main-view":"jovED","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"kTESN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kKYUA"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -5685,28 +5681,7 @@ module.exports = require("a569817e6ea559f6");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"lOjBx":[function(require,module,exports) {
-"use strict";
-var m = require("aaccff5d309d9239");
-var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-exports.createRoot = function(c, o) {
-    i.usingClientEntryPoint = true;
-    try {
-        return m.createRoot(c, o);
-    } finally{
-        i.usingClientEntryPoint = false;
-    }
-};
-exports.hydrateRoot = function(c, h, o) {
-    i.usingClientEntryPoint = true;
-    try {
-        return m.hydrateRoot(c, h, o);
-    } finally{
-        i.usingClientEntryPoint = false;
-    }
-};
-
-},{"aaccff5d309d9239":"j6uA9"}],"j6uA9":[function(require,module,exports) {
+},{}],"j6uA9":[function(require,module,exports) {
 "use strict";
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -27165,7 +27140,206 @@ module.exports = require("ef03b89c8fe2794e");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"lJZlQ":[function() {},{}],"kKYUA":[function(require,module,exports) {
+},{}],"jovED":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$0362 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$0362.prelude(module);
+
+try {
+// Exposes the component making it available for use by other components, modules and files
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MainView", ()=>MainView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+//imports the movie card component
+var _movieCard = require("../MovieCard/movie-card");
+//imports the movie view component
+var _movieView = require("../movie-view/movie-view");
+var _s = $RefreshSig$();
+const MainView = ()=>{
+    _s();
+    const [movies, setMovies] = (0, _react.useState)([
+        {
+            id: 1,
+            title: "Goldfinger",
+            director: {
+                name: "Guy Hamilton",
+                bio: "Guy Hamilton was a British film director known for his work on the James Bond film series. He was born on September 16, 1922, in Paris, France, to British parents. Hamilton directed a total of four James Bond films, including 'Goldfinger,' which is considered one of the most iconic films in the series. His direction contributed significantly to the establishment of the Bond franchise's visual style and action-packed sequences. Hamilton's impact on the spy genre and his memorable contributions to popular cinema are widely recognized.",
+                dob: "September 16, 1922"
+            },
+            actor: {
+                name: "Sean Connery",
+                bio: "Sean Connery began his journey to stardom in the early 1950s with a series of minor roles in theater and film. He worked as a milkman, a lifeguard, and a bodybuilder before finding his calling in acting. His breakthrough came in the late 1950s when he was cast as James Bond, Agent 007, in the film adaptation of Ian Fleming's novel, Dr. No (1962). This role would catapult him to international fame and define his career. Connery went on to portray James Bond in a total of seven films, including 'From Russia with Love', 'Goldfinger,' and 'Thunderball.' His suave demeanor, charisma, and rugged charm made him the quintessential Bond and a cultural icon. Beyond Bond, Connery's acting versatility allowed him to tackle a wide range of roles in various genres. He received critical acclaim for his performances in films such as 'The Man Who Would Be King,' 'The Untouchables' (for which he won an Academy Award for Best Supporting Actor), 'Indiana Jones and the Last Crusade,' and 'The Hunt for Red October,' among others. Connery's career spanned several decades, and he remained a beloved figure in the entertainment industry until his retirement from acting in the early 2000s. His distinctive voice and presence on screen left an indelible mark on cinema, earning him a permanent place in the annals of Hollywood history. Unfortunately, Sean Connery passed away on October 31, 2020, at the age of 90, but his legacy as one of the most celebrated actors in the history of film continues to endure.",
+                dob: "August 25, 1930"
+            },
+            genre: [
+                "Action",
+                "Spy",
+                "Adventure",
+                "Thriller",
+                "Mystery"
+            ],
+            description: "James Bond investigates Auric Goldfinger, a wealthy gold smuggler with a devious plan to contaminate the United States Bullion Depository at Fort Knox.",
+            img: "https://media.gq-magazine.co.uk/photos/5d1394634858d3440a004d21/4:3/w_1560,h_1170,c_limit/Goldfinger-hp-GQ-07Apr15_rex_b.jpg"
+        },
+        {
+            id: 2,
+            title: "From Russia With Love",
+            director: {
+                name: "Terence Young",
+                bio: "Terence Young was an English film director and screenwriter, best known for directing the early James Bond films. He was born on June 20, 1915, in Shanghai, China, to British parents. Young began his career as an assistant director and worked on various films before gaining recognition for his work on the James Bond series. He directed three of the first four Bond films, helping to establish the iconic style of the series. Young's contributions to the spy genre and his impact on popular culture are widely acknowledged.",
+                "Date Of Birth": "June 20, 1915"
+            },
+            actor: {
+                name: "Sean Connery",
+                bio: "Sean Connery began his journey to stardom in the early 1950s with a series of minor roles in theater and film. He worked as a milkman, a lifeguard, and a bodybuilder before finding his calling in acting. His breakthrough came in the late 1950s when he was cast as James Bond, Agent 007, in the film adaptation of Ian Fleming's novel, Dr. No (1962). This role would catapult him to international fame and define his career. Connery went on to portray James Bond in a total of seven films, including 'From Russia with Love,' 'Goldfinger,' and 'Thunderball.' His suave demeanor, charisma, and rugged charm made him the quintessential Bond and a cultural icon. Beyond Bond, Connery's acting versatility allowed him to tackle a wide range of roles in various genres. He received critical acclaim for his performances in films such as 'The Man Who Would Be King,' 'The Untouchables' (for which he won an Academy Award for Best Supporting Actor), 'Indiana Jones and the Last Crusade,' and 'The Hunt for Red October,' among others. Connery's career spanned several decades, and he remained a beloved figure in the entertainment industry until his retirement from acting in the early 2000s. His distinctive voice and presence on screen left an indelible mark on cinema, earning him a permanent place in the annals of Hollywood history. Unfortunately, Sean Connery passed away on October 31, 2020, at the age of 90, but his legacy as one of the most celebrated actors in the history of film continues to endure.",
+                "Date Of Birth": "August 25, 1930"
+            },
+            genre: [
+                "Action",
+                "Spy",
+                "Adventure",
+                "Thriller",
+                "Mystery",
+                "Romance",
+                "Crime Fiction"
+            ],
+            description: "James Bond is sent to Istanbul to retrieve a decoding machine, but he becomes entangled in a deadly game of espionage and romance involving a Soviet defector.",
+            img: "https://imageio.forbes.com/specials-images/imageserve/62543ad901a6cf103201f237/0x0.jpg?format=jpg&crop=2458,1383,x0,y24,safe&width=1200"
+        },
+        {
+            id: 3,
+            title: "Dr. No",
+            director: {
+                name: "Terence Young",
+                bio: "Terence Young was an English film director and screenwriter, best known for directing the early James Bond films. He was born on June 20, 1915, in Shanghai, China, to British parents. Young began his career as an assistant director and worked on various films before gaining recognition for his work on the James Bond series. He directed three of the first four Bond films, helping to establish the iconic style of the series. Young's contributions to the spy genre and his impact on popular culture are widely acknowledged.",
+                "Date Of Birth": "June 20, 1915"
+            },
+            actor: {
+                name: "Sean Connery",
+                bio: "Sean Connery began his journey to stardom in the early 1950s with a series of minor roles in theater and film. He worked as a milkman, a lifeguard, and a bodybuilder before finding his calling in acting. His breakthrough came in the late 1950s when he was cast as James Bond, Agent 007, in the film adaptation of Ian Fleming's novel, Dr. No (1962). This role would catapult him to international fame and define his career. Connery went on to portray James Bond in a total of seven films, including 'Dr. No,' 'From Russia with Love,' and 'Goldfinger.' His suave demeanor, charisma, and rugged charm made him the quintessential Bond and a cultural icon. Beyond Bond, Connery's acting versatility allowed him to tackle a wide range of roles in various genres. He received critical acclaim for his performances in films such as 'The Man Who Would Be King,' 'The Untouchables' (for which he won an Academy Award for Best Supporting Actor), 'Indiana Jones and the Last Crusade,' and 'The Hunt for Red October,' among others. Connery's career spanned several decades, and he remained a beloved figure in the entertainment industry until his retirement from acting in the early 2000s. His distinctive voice and presence on screen left an indelible mark on cinema, earning him a permanent place in the annals of Hollywood history. Unfortunately, Sean Connery passed away on October 31, 2020, at the age of 90, but his legacy as one of the most celebrated actors in the history of film continues to endure.",
+                "Date Of Birth": "August 25, 1930"
+            },
+            genre: [
+                "Action",
+                "Spy",
+                "Adventure",
+                "Thriller",
+                "Romance",
+                "Crime Fiction"
+            ],
+            description: "James Bond is dispatched to Jamaica to investigate the disappearance of a fellow British agent and discovers a plot involving a reclusive villain named Dr. No.",
+            img: "https://eder6ypjvgv.exactdn.com/wp-content/uploads/2020/11/Capture-de%CC%81cran-2020-11-19-a%CC%80-16.13.07.jpg?strip=all&lossy=1&resize=1280%2C650&ssl=1"
+        }
+    ]);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+        movie: selectedMovie,
+        onBackClick: ()=>setSelectedMovie(null)
+    }, void 0, false, {
+        fileName: "src/components/MainView/main-view.jsx",
+        lineNumber: 87,
+        columnNumber: 7
+    }, undefined);
+    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: "The list is empty!"
+    }, void 0, false, {
+        fileName: "src/components/MainView/main-view.jsx",
+        lineNumber: 95,
+        columnNumber: 12
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movie: movie,
+                onMovieClick: (newSelectedMovie)=>{
+                    setSelectedMovie(newSelectedMovie);
+                }
+            }, movie.id, false, {
+                fileName: "src/components/MainView/main-view.jsx",
+                lineNumber: 101,
+                columnNumber: 9
+            }, undefined))
+    }, void 0, false, {
+        fileName: "src/components/MainView/main-view.jsx",
+        lineNumber: 99,
+        columnNumber: 5
+    }, undefined);
+};
+_s(MainView, "K0DrFQ80Rtq5z2M6bxBCcQl5orA=");
+_c = MainView;
+var _c;
+$RefreshReg$(_c, "MainView");
+
+  $parcel$ReactRefreshHelpers$0362.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../MovieCard/movie-card":"dg3Ls","../movie-view/movie-view":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"kTESN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kKYUA"}],"dg3Ls":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$2506 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$2506.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const MovieCard = ({ movie, onMovieClick })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        onClick: ()=>{
+            onMovieClick(movie);
+        },
+        children: movie.title
+    }, void 0, false, {
+        fileName: "src/components/MovieCard/movie-card.jsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, undefined);
+};
+_c = MovieCard;
+var _c;
+$RefreshReg$(_c, "MovieCard");
+
+  $parcel$ReactRefreshHelpers$2506.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"kTESN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kKYUA"}],"kTESN":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"kKYUA":[function(require,module,exports) {
 "use strict";
 var Refresh = require("70504300db8a07b9");
 function debounce(func, delay) {
@@ -27303,6 +27477,102 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"70504300db8a07b9":"cUuZg"}]},["bmGV7","5VquY","d8Dch"], "d8Dch", "parcelRequire5da5")
+},{"70504300db8a07b9":"cUuZg"}],"ggaUx":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$e9f6.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieView", ()=>MovieView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const MovieView = ({ movie, onBackClick })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    src: movie.img,
+                    width: "400px"
+                }, void 0, false, {
+                    fileName: "src/components/movie-view/movie-view.jsx",
+                    lineNumber: 5,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 4,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Title: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 8,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.title
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 9,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 7,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Director: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 12,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.director.name
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 13,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 11,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: onBackClick,
+                children: "Back"
+            }, void 0, false, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 15,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/movie-view/movie-view.jsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, undefined);
+};
+_c = MovieView;
+var _c;
+$RefreshReg$(_c, "MovieView");
+
+  $parcel$ReactRefreshHelpers$e9f6.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"kTESN","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"kKYUA"}],"lJZlQ":[function() {},{}]},["bmGV7","5VquY","d8Dch"], "d8Dch", "parcelRequire5da5")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
