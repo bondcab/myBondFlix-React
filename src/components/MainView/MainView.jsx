@@ -1,11 +1,13 @@
 // Exposes the component making it available for use by other components, modules and files
 import { useState } from "react";
 
+import React from "react";
+
 //imports the movie card component
-import { MovieCard } from "../MovieCard/movie-card";
+import { MovieCard } from "../MovieCard/MovieCard";
 
 //imports the movie view component
-import { MovieView } from "../movie-view/movie-view";
+import { MovieView } from "../MovieView/MovieView";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([

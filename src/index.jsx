@@ -4,7 +4,7 @@ import { createRoot } from "react-dom";
 import React from "react";
 
 // 3.3 Adds the mainview component
-import { MainView } from "./components/MainView/main-view";
+import { MainView } from "./components/MainView/MainView";
 
 //3.3 Adds the scss styling
 import "./index.scss";
