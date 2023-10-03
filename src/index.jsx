@@ -1,5 +1,5 @@
 // 3.2 Imports react function for rendering react components to the DOM
-import { createRoot } from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import React from "react";
 
