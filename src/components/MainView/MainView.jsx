@@ -1,5 +1,6 @@
 // Exposes the component making it available for use by other components, modules and files
 import { useState, useEffect } from "react";
+import { LoginView } from "../LoginView/LoginView";
 
 import React from "react";
 
@@ -11,6 +12,21 @@ import { MovieView } from "../MovieView/MovieView";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
+
+  const [user, setUser] = useState(null);
+
+  const [token, setToken] = useState(null);
+
+  if (!user) {
+    return (
+      <LoginView
+        onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }}
+      />
+    );
+  }
 
   useEffect(() => {
     fetch("https://bond-flix-9c1709905a90.herokuapp.com/movies")
