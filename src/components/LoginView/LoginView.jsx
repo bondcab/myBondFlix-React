@@ -2,17 +2,19 @@
 import React from "react";
 import { useState } from "react";
 
-export const LoginView = () => {
+export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const data = {
-    Username: username,
-    Password: password,
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const data = {
+      Username: username,
+      Password: password,
+    };
+
+    console.log(data);
 
     fetch("https://bond-flix-9c1709905a90.herokuapp.com/login", {
       method: "POST",
@@ -25,13 +27,16 @@ export const LoginView = () => {
       .then((data) => {
         console.log("Login response: ", data);
         if (data.user) {
+          localStorage.setItem("user", JSON.stringify(data.user));
+          localStorage.setItem("token", data.token);
           onLoggedIn(data.user, data.token);
         } else {
           alert("No such user");
         }
       })
       .catch((e) => {
-        alert("Something went wrong");
+        console.error("Error:", e);
+        alert("An error occurred: " + e.message);
       });
   };
 
@@ -44,7 +49,7 @@ export const LoginView = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          minlength="5"
+          minLength="5"
         />
       </label>
       <label>
