@@ -1,19 +1,42 @@
 // Exposes the component making it available for use by other components, modules and files
 import { useState, useEffect } from "react";
-
+import { LoginView } from "../LoginView/LoginView";
 import React from "react";
-
-//imports the movie card component
 import { MovieCard } from "../MovieCard/MovieCard";
-
-//imports the movie view component
 import { MovieView } from "../MovieView/MovieView";
+import { SignupView } from "../SignupView/SignupView";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
+
+  if (!user) {
+    return (
+      <>
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+        or
+        <SignupView />
+      </>
+    );
+  }
 
   useEffect(() => {
-    fetch("https://bond-flix-9c1709905a90.herokuapp.com/movies")
+    if (!token) {
+      return;
+    }
+
+    fetch("https://bond-flix-9c1709905a90.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log("movies from api:", data);
@@ -39,9 +62,7 @@ export const MainView = () => {
 
         setMovies(moviesFromApi);
       });
-  }, []);
-
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  }, [token]);
 
   if (selectedMovie) {
     return (
@@ -67,6 +88,15 @@ export const MainView = () => {
           }}
         />
       ))}
+      <button
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </button>
     </div>
   );
 };

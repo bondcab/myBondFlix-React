@@ -18,4 +18,4 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 
 // 3.2 Tells react to render your app in the root DOM element
-root.render(<App />, container);
+root.render(<App />);
