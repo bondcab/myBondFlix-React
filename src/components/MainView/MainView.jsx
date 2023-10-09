@@ -7,12 +7,12 @@ import { MovieView } from "../MovieView/MovieView";
 import { SignupView } from "../SignupView/SignupView";
 
 export const MainView = () => {
+  const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [selectedMovie, setSelectedMovie] = useState(null);
 
   if (!user) {
     return (
