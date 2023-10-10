@@ -1,5 +1,42 @@
+$primary: #132043;
+
+
+@import '~bootstrap/scss/bootstrap.scss';
+
 $color: steelblue;
 
 .myBond-flix {
     color: $color;
 }
+
+.textCentre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgMain{
+    height: 70%
+}
+
+.mainContainer{
+    margin-top: 100px;
+    margin-bottom: 100px;
+ 
+}
+
+.MovieViewButton {
+    
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.MovieViewText {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

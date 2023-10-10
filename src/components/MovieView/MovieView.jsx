@@ -1,18 +1,30 @@
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div>
+    <Col md={8}>
       <div>
-        <img src={movie.imageUrl} width="400px" alt={movie.Title} />
+        <div>
+          <img src={movie.imageUrl} className="w-100" alt={movie.Title} />
+        </div>
+        <div className="MovieViewText">
+          <div>
+            <span>Title: </span>
+            <span>{movie.title}</span>
+          </div>
+          <div>
+            <span>Director: </span>
+            <span>{movie.director.name}</span>
+          </div>
+        </div>
+
+        <div className="MovieViewButton">
+          <Button onClick={onBackClick} variant="primary">
+            Back
+          </Button>
+        </div>
       </div>
-      <div>
-        <span>Title: </span>
-        <span>{movie.title}</span>
-      </div>
-      <div>
-        <span>Director: </span>
-        <span>{movie.director.name}</span>
-      </div>
-      <button onClick={onBackClick}>Back</button>
-    </div>
+    </Col>
   );
 };
