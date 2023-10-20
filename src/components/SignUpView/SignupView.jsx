@@ -3,12 +3,14 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
+import { useNavigate } from "react-router-dom";
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,7 +19,7 @@ export const SignupView = () => {
       Username: username,
       Password: password,
       Email: email,
-      Birthday: birthday,
+      DOB: birthday,
     };
 
     fetch("https://bond-flix-9c1709905a90.herokuapp.com/users", {
@@ -29,7 +31,7 @@ export const SignupView = () => {
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful");
-        window.location.reload();
+        navigate("/login");
       } else {
         alert("Signup failed");
       }
@@ -80,6 +82,7 @@ export const SignupView = () => {
             required
           />
         </Form.Group>
+
         <Button variant="primary" type="submit">
           Submit
         </Button>

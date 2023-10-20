@@ -13218,12 +13218,27 @@ textarea.form-control-lg {
 }
 
 .mainContainer {
-  margin-top: 100px;
   margin-bottom: 100px;
+  padding-top: 100px;
 }
 
-.MovieViewButton {
-  justify-content: flex-end;
+.FavouritesHeading {
+  margin-top: 100px;
+}
+
+.centre {
+  justify-content: center;
+  display: flex;
+}
+
+.MovieViewTitle {
+  font-weight: bold;
+}
+
+.contentContainer {
+  align-content: center;
+  padding-top: 3%;
+  padding-left: 5%;
   display: flex;
 }
 
@@ -13231,8 +13246,86 @@ textarea.form-control-lg {
   text-align: center;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 100%;
   display: flex;
+}
+
+.plot {
+  font-weight: bold;
+}
+
+.description {
+  margin-top: 8%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.MovieViewButton {
+  justify-content: flex-end;
+  margin-top: 12%;
+  display: flex;
+}
+
+.TextContainer {
+  border: solid pink;
+  width: 100%;
+}
+
+.UpdateInformationLink {
+  color: green;
+  font-size: 90%;
+}
+
+.DeleteAccount {
+  color: #c80202;
+  font-size: 90%;
+}
+
+.UpdateLink, .DeleteLink {
+  text-decoration: none;
+}
+
+.UpdateInfo {
+  width: 100%;
+}
+
+.AccountUpdateButton {
+  margin-top: 20px;
+}
+
+.UpdateButtonParent {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.UpdateForm {
+  width: 50%;
+}
+
+.UpdateFormParent {
+  justify-content: center;
+  display: flex;
+}
+
+.UpdateInfoHeading {
+  text-align: center;
+}
+
+.UpdateBack {
+  color: green;
+  margin-top: 20%;
+  font-size: 90%;
+}
+
+.UpdateBackParent {
+  justify-content: end;
+  display: flex;
+}
+
+.LoginButton {
+  margin-top: 10%;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
