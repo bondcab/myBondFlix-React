@@ -1,6 +1,6 @@
 // Exposes the component making it available for use by other components, modules and files
 import { useState, useEffect } from "react";
-import { LoginView } from "../ProfileView/LoginView";
+import { LoginView } from "../LoginView/LoginView";
 import React from "react";
 import { MovieCard } from "../MovieCard/MovieCard";
 import { MovieView } from "../MovieView/MovieView";
