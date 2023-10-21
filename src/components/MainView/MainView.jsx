@@ -1,10 +1,10 @@
 // Exposes the component making it available for use by other components, modules and files
 import { useState, useEffect } from "react";
-import { LoginView } from "../LoginView/LoginView";
+import { LoginView } from "../ProfileView/LoginView";
 import React from "react";
 import { MovieCard } from "../MovieCard/MovieCard";
 import { MovieView } from "../MovieView/MovieView";
-import { SignupView } from "../SignupView/SignupView";
+import { SignupView } from "../SignUpView/SignupView";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
