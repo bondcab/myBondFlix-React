@@ -66,6 +66,7 @@ export const MovieView = ({
 
   return (
     <Col md={9}>
+
       <div>
         <div>
           <img src={movie.imageUrl} className="w-100" alt={movie.Title} />
@@ -110,6 +111,7 @@ export const MovieView = ({
           <Link to={"/"}>
             <Button variant="primary">Back</Button>
           </Link>
+
         </div>
       </div>
     </Col>

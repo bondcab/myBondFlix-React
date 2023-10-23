@@ -23,6 +23,7 @@ export const MainView = () => {
     storedUser ? storedUser.FavouriteFilms : []
   );
 
+
   useEffect(() => {
     if (!token) {
       return;
@@ -230,5 +231,6 @@ export const MainView = () => {
         </Routes>
       </Row>
     </BrowserRouter>
+
   );
 };
