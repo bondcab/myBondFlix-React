@@ -22,7 +22,29 @@ export const MainView = () => {
   const [favouriteFilms, setFavouriteFilms] = useState(
     storedUser ? storedUser.FavouriteFilms : []
   );
+  let letters = "";
+  const [originalMovies, setOriginalMovies] = useState([]);
+  let titles = originalMovies.map((film) => film.title);
+  const [search, setSearch] = useState("");
+  let filteredMovies = [];
 
+  const handleChange = (event) => {
+    letters = event.target.value.toLowerCase();
+    console.log("Letters Value: ", letters);
+    setSearch(letters);
+
+    filteredMovies = titles.filter(function (film) {
+      let titleSlice = film.slice(0, letters.length).toLowerCase();
+      return titleSlice === letters;
+    });
+
+    console.log("Filtered Movies: ", filteredMovies);
+    console.log("Original movies: ", originalMovies);
+    console.log("Titles: ", titles);
+    setMovies(
+      originalMovies.filter((movie) => filteredMovies.includes(movie.title))
+    );
+  };
 
   useEffect(() => {
     if (!token) {
@@ -59,6 +81,7 @@ export const MainView = () => {
         });
 
         setMovies(moviesFromApi);
+        setOriginalMovies(moviesFromApi);
       });
   }, [token]);
 
@@ -72,6 +95,7 @@ export const MainView = () => {
           localStorage.clear();
         }}
       />
+
       <Row className="mainContainer centre">
         <Routes>
           <Route
@@ -174,10 +198,18 @@ export const MainView = () => {
               <>
                 {!user ? (
                   <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
                 ) : (
                   <>
+                    <div className="searchParent">
+                      <input
+                        type="text"
+                        placeholder=" Search"
+                        className="searchBar"
+                        onChange={handleChange}
+                        value={search}
+                      />
+                    </div>
+
                     {movies.map((movie) => (
                       <Col className="mb-4" key={movie.id} md={3}>
                         <MovieCard movie={movie} />
@@ -231,6 +263,5 @@ export const MainView = () => {
         </Routes>
       </Row>
     </BrowserRouter>
-
   );
 };
