@@ -30,7 +30,7 @@ export const MainView = () => {
 
   const handleChange = (event) => {
     letters = event.target.value.toLowerCase();
-    console.log("Letters Value: ", letters);
+
     setSearch(letters);
 
     filteredMovies = titles.filter(function (film) {
@@ -38,9 +38,6 @@ export const MainView = () => {
       return titleSlice === letters;
     });
 
-    console.log("Filtered Movies: ", filteredMovies);
-    console.log("Original movies: ", originalMovies);
-    console.log("Titles: ", titles);
     setMovies(
       originalMovies.filter((movie) => filteredMovies.includes(movie.title))
     );
