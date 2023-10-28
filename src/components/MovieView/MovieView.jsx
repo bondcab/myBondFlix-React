@@ -23,8 +23,6 @@ export const MovieView = ({
     "/movies/" +
     movieID;
 
-  console.log(storedUser);
-
   if (favouriteFilms.includes(movieID)) {
     favouriteIconColour = "#132043";
   }
@@ -62,14 +60,15 @@ export const MovieView = ({
     }
   }
 
-  console.log(favouriteIconColour);
-
   return (
     <Col md={9}>
-
       <div>
         <div>
-          <img src={movie.imageUrl} className="w-100" alt={movie.Title} />
+          <img
+            src={movie.imageUrl}
+            className="w-100 movieImage"
+            alt={movie.Title}
+          />
         </div>
         <div className="contentContainer">
           <div className="favouriteIcon">
@@ -97,7 +96,15 @@ export const MovieView = ({
             </div>
             <div>
               <span>Director: </span>
-              <span>{movie.director.name}</span>
+              <Link to={"/director/" + movie.director.name}>
+                <span className="directorName">{movie.director.name}</span>
+              </Link>
+            </div>
+            <div>
+              <span>Actor: </span>
+              <Link to={"/actor/" + movie.actor.name}>
+                <span className="directorName">{movie.actor.name}</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -111,7 +118,6 @@ export const MovieView = ({
           <Link to={"/"}>
             <Button variant="primary">Back</Button>
           </Link>
-
         </div>
       </div>
     </Col>
