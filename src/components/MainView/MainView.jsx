@@ -12,6 +12,8 @@ import { NavigationBar } from "../NavigationBar/NavigationBar";
 import ProfileView from "../ProfileView/ProfileView";
 import UpdateInfo from "../ProfileView/UpdateInfo";
 import DeleteAccount from "../ProfileView/DeleteAccount";
+import DirectorView from "../DirectorView/DirectorView";
+import ActorView from "../ActorView/ActorView";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -64,11 +66,13 @@ export const MainView = () => {
               name: movieData.Director.Name,
               bio: movieData.Director.Bio,
               dateOfBirth: movieData.Director["Date Of Birth"],
+              DirectorImage: movieData.Director.DirectorImage,
             },
             actor: {
               name: movieData.Actor.Name,
               bio: movieData.Actor.Bio,
               dateOfBirth: movieData.Actor["Date Of Birth"],
+              ActorImage: movieData.Actor.ActorImage,
             },
             genre: movieData.Genre,
             description: movieData.Description,
@@ -252,6 +256,47 @@ export const MainView = () => {
                         }}
                       />
                     </Col>
+                  </>
+                )}
+              </>
+            }
+          />
+
+          <Route
+            path="/director/:directorName"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <>
+                    {movies.length > 0 ? (
+                      <Col md={6}>
+                        <DirectorView movies={movies} />
+                      </Col>
+                    ) : (
+                      <Col> Loading...</Col>
+                    )}
+                  </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/actor/:actorName"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <>
+                    {movies.length > 0 ? (
+                      <Col md={6}>
+                        <ActorView movies={movies} />
+                      </Col>
+                    ) : (
+                      <Col> Loading...</Col>
+                    )}
                   </>
                 )}
               </>
