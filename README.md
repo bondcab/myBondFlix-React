@@ -1,6 +1,19 @@
-# Bond Flix App
+# myBondFlix App
 
 An web app to find information on all current James Bond films
+
+## Techologies Used
+
+HTML, CSS, JavaScript, React JS, Parcel, React Bootstrap, Netlify
+
+## Installing Dependencies
+
+1. Install the latest version of Node.js
+2. Run:
+
+```bash
+npm install
+```
 
 ## Testing the Project
 
