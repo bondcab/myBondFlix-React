@@ -8,7 +8,20 @@ $color: steelblue;
   color: $color;
 }
 
-//Movie Card
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Exo 2", sans-serif;
+}
+
+// Search Bar Styling
+.hideSearchBar {
+  opacity: 0;
+}
+
+//Movie Card Styling
 
 a {
   text-decoration: none;
@@ -16,6 +29,25 @@ a {
 
 .movieCard {
   max-height: 100%;
+  opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: solid rgba(0, 0, 0, 0.294) 1px;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.movieCard:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.expanded-card {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.hideCards {
+  opacity: 0;
 }
 
 .textCentre {
@@ -37,11 +69,11 @@ a {
 
 .imgMain {
   height: 100%;
+  border-bottom: solid rgba(0, 0, 0, 0.294) 1px;
 }
 
 .mainContainer {
   padding-top: 50px;
-
   margin-bottom: 100px;
 }
 
@@ -111,7 +143,15 @@ a {
   border-radius: 10px;
 }
 
-//Account Information Component
+//Account Information Component Styling
+
+.accountInfoHeading {
+  margin-bottom: 30px;
+}
+
+.FavouritesHeading {
+  margin-bottom: 30px;
+}
 
 .UpdateInformationLink {
   font-size: 90%;
@@ -131,7 +171,7 @@ a {
   text-decoration: none;
 }
 
-//Update Information Component
+//Update Information Component Styling
 .UpdateInfo {
   width: 100%;
 }
@@ -166,15 +206,82 @@ a {
 
 .UpdateBackParent {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
-//Login View
+//Login View Styling
+.loginComponent {
+  width: 100%;
+}
 .LoginButton {
-  margin-top: 10%;
+  margin-top: 19px;
 }
 
-//Navigation bar
+.loginForm {
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
+  width: 100%;
+  height: 70vh;
+}
+
+.loginFormInput {
+  transform: translateX(-60px);
+  height: 200px;
+  flex-wrap: wrap;
+}
+
+.loginHeadingContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.bondLogo {
+  transform: translateX(-15px);
+  width: 200px;
+  height: 70px;
+  margin-top: 65px;
+  rotate: 270deg;
+}
+
+@media (max-width: 400px) {
+  .bondLogo {
+    border: solid green;
+    display: none;
+  }
+
+  .loginFormInput {
+    transform: translateX(0px);
+  }
+}
+
+// Signup View Styling
+
+.signupHeadingContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.signupForm {
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
+  width: 100%;
+  height: 70vh;
+}
+
+.signupButton {
+  margin-top: 19px;
+}
+
+//Navigation bar Styling
+.navigationBar {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 8px;
+}
+
 .logoutLink {
   margin-left: auto;
   color: $primary;
@@ -185,10 +292,10 @@ a {
   justify-content: left;
   gap: 5px;
   width: 100%;
-  align-items: end;
+  align-items: flex-end;
 }
 
-//MainView
+//MainView Styling
 .searchBar {
   display: block;
   width: 300px;
@@ -209,7 +316,7 @@ a {
   margin-top: 25%;
 }
 
-//Director View
+//Director View Styling
 .DirectorViewText {
   margin-left: 25%;
   margin-right: 25%;
@@ -232,6 +339,69 @@ a {
   font-weight: bold;
 }
 
-// .directorImageContainer {
+//BondIntro Styling
 
-// }
+#bondTheme {
+  display: none;
+}
+
+.bondIntro {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  transition: opacity 2s ease-in-out;
+  opacity: 1;
+  position: absolute;
+  z-index: -1;
+  margin-top: 5%;
+}
+
+.introBackground {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.blackOverlay {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  position: fixed;
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
+
+.blackOverlayRemove {
+  opacity: 0;
+}
+
+.bondVideo {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.videoReveal {
+  transition: opacity 2s ease-in-out;
+  opacity: 1;
+}
+
+.introHidden {
+  transition: opacity 2s ease-in-out;
+  opacity: 0;
+}
+
+.videoHidden {
+  transition: opacity 2s ease-in-out;
+  opacity: 0;
+}
+
+.introDisplayNone {
+  display: none;
+}
+
+.bondIntroReveal {
+  z-index: 3;
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+}
