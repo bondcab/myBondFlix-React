@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar
+      bg="light"
+      expand="lg"
+      // style={{ border: "2px solid red" }}
+      className="navigationBar"
+    >
       <Container>
         <Navbar.Brand as={Link} to="/">
           James Bond Movies App
