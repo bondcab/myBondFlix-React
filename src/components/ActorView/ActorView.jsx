@@ -6,9 +6,6 @@ import Button from "react-bootstrap/Button";
 function ActorView({ movies }) {
   const { actorName } = useParams();
   const movie = movies.find((m) => m.actor.name === actorName);
-  console.log("Original Movies", movies);
-  console.log("Movie: ", movie);
-  console.log("Director Name: ", actorName);
 
   if (!movies.length) {
     return <Col md={9}>Loading...</Col>;

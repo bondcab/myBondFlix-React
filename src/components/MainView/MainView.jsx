@@ -28,6 +28,7 @@ export const MainView = () => {
   const [originalMovies, setOriginalMovies] = useState([]);
   let titles = originalMovies.map((film) => film.title);
   const [search, setSearch] = useState("");
+
   let filteredMovies = [];
 
   const handleChange = (event) => {
@@ -97,7 +98,7 @@ export const MainView = () => {
         }}
       />
 
-      <Row className="mainContainer centre">
+      <Row className="mainContainer">
         <Routes>
           <Route
             path="/login"
@@ -106,12 +107,13 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col md={5}>
+                  <Col className="col-12">
                     <LoginView
                       onLoggedIn={(user, token) => {
                         setUser(user);
                         setToken(token);
                       }}
+                      user={user}
                     />
                   </Col>
                 )}
@@ -125,7 +127,7 @@ export const MainView = () => {
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col md={5}>
+                  <Col md={12}>
                     <SignupView />
                   </Col>
                 )}

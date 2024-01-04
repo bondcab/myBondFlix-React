@@ -13,8 +13,6 @@ function DeleteAccount({ onLoggedOut }) {
 
   const token = storedToken;
 
-  console.log("Stored User: ", storedUser.Username);
-
   const handleSubmit = (event) => {
     let confirm = prompt("Please type DELETE to confirm");
 

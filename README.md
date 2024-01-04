@@ -4,7 +4,7 @@ An web app to find information on all current James Bond films
 
 ## Techologies Used
 
-HTML, CSS, JavaScript, React JS, Parcel, React Bootstrap, Netlify
+HTML, CSS, JavaScript, React JS, Parcel, React Bootstrap
 
 ## Installing Dependencies
 
