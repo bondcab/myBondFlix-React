@@ -10,7 +10,7 @@ function AccountInfo(storedUser) {
 
   return (
     <div className="AccountInformation">
-      <h1>Account Information</h1>
+      <h1 className="accountInfoHeading">Account Information</h1>
       <p>Username: {username}</p>
       <p>Email: {email} </p>
       <p>Birthday: {`${birthdayDay}/${birthdayMonth}/${birthdayYear}`}</p>
