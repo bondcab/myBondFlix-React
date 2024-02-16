@@ -22,13 +22,16 @@ export const SignupView = () => {
       DOB: birthday,
     };
 
-    fetch("https://bond-flix-9c1709905a90.herokuapp.com/users", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((response) => {
+    fetch(
+      "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com:8080/users",
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((response) => {
       if (response.ok) {
         alert("Signup successful");
         navigate("/login");
