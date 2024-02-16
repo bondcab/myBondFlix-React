@@ -18,7 +18,7 @@ export const MovieView = ({
   let [favouriteIconColour, setIconColour] = useState("lightgrey");
   let movieID = encodeURIComponent(movie.id);
   let url =
-    "https://bond-flix-9c1709905a90.herokuapp.com/users/" +
+    "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com/users/" +
     username +
     "/movies/" +
     movieID;
