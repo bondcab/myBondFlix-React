@@ -17,13 +17,16 @@ export const LoginView = ({ onLoggedIn, user }) => {
       Password: password,
     };
 
-    fetch("https://bond-flix-9c1709905a90.herokuapp.com/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com:8080/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data.user) {
