@@ -26,7 +26,7 @@ function UpdateInfo() {
     };
 
     fetch(
-      "https://bond-flix-9c1709905a90.herokuapp.com/users/" +
+      "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com:8080/users/" +
         storedUser.Username,
       {
         method: "PUT",
