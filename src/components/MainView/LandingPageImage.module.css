@@ -1,0 +1,9 @@
+.landingViewContainer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url("../../../public/images/landing_image_01.jpeg");
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+}

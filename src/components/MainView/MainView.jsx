@@ -14,6 +14,10 @@ import UpdateInfo from "../ProfileView/UpdateInfo";
 import DeleteAccount from "../ProfileView/DeleteAccount";
 import DirectorView from "../DirectorView/DirectorView";
 import ActorView from "../ActorView/ActorView";
+import styles from "./MainView.module.css";
+import { API_URL } from "../../config";
+import LandingPageImage from "./LandingPageImage";
+import "../../../src/";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -51,12 +55,9 @@ export const MainView = () => {
       return;
     }
 
-    fetch(
-      "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com:8080/movies",
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
+    fetch(API_URL + "/movies", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => response.json())
       .then((data) => {
         let dataReordered = data.sort(
@@ -105,7 +106,9 @@ export const MainView = () => {
         }}
       />
 
-      <Row className="mainContainer">
+      {!user ? <LandingPageImage /> : null}
+
+      <Row className={styles.mainContainer}>
         <Routes>
           <Route
             path="/login"
@@ -210,11 +213,11 @@ export const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <>
-                    <div className="searchParent">
+                    <div className={styles.searchParent}>
                       <input
                         type="text"
                         placeholder=" Search"
-                        className="searchBar"
+                        className={styles.searchBar}
                         onChange={handleChange}
                         value={search}
                       />

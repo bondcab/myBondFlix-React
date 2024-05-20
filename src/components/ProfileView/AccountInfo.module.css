@@ -1,0 +1,25 @@
+.accountInfoHeading {
+  margin-bottom: 30px;
+}
+
+.FavouritesHeading {
+  margin-bottom: 30px;
+}
+
+.UpdateInformationLink {
+  font-size: 90%;
+  color: green;
+}
+
+.DeleteAccount {
+  font-size: 90%;
+  color: rgb(200, 2, 2);
+}
+
+.UpdateLink {
+  text-decoration: none;
+}
+
+.DeleteLink {
+  text-decoration: none;
+}

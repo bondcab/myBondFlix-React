@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import styles from "./MovieView.module.css";
+import { API_URL } from "../../config";
 
 export const MovieView = ({
   movies,
@@ -17,11 +19,7 @@ export const MovieView = ({
   const [isFavourited, setIsFavourited] = useState(false);
   let [favouriteIconColour, setIconColour] = useState("lightgrey");
   let movieID = encodeURIComponent(movie.id);
-  let url =
-    "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com/users/" +
-    username +
-    "/movies/" +
-    movieID;
+  let url = API_URL + "/users/" + username + "/movies/" + movieID;
 
   if (favouriteFilms.includes(movieID)) {
     favouriteIconColour = "#132043";
@@ -66,12 +64,12 @@ export const MovieView = ({
         <div>
           <img
             src={movie.imageUrl}
-            className="w-100 movieImage"
+            className={styles.movieImage}
             alt={movie.Title}
           />
         </div>
-        <div className="contentContainer">
-          <div className="favouriteIcon">
+        <div className={styles.contentContainer}>
+          <div className={styles.favouriteIcon}>
             <svg
               onClick={filmFavourited}
               onMouseOver={mouseOver}
@@ -90,31 +88,33 @@ export const MovieView = ({
             </svg>
           </div>
 
-          <div className="MovieViewText">
+          <div className={styles.MovieViewText}>
             <div>
-              <span className="MovieViewTitle">{movie.title}</span>
+              <span className={styles.MovieViewTitle}>{movie.title}</span>
             </div>
             <div>
               <span>Director: </span>
               <Link to={"/director/" + movie.director.name}>
-                <span className="directorName">{movie.director.name}</span>
+                <span className={styles.directorName}>
+                  {movie.director.name}
+                </span>
               </Link>
             </div>
             <div>
               <span>Actor: </span>
               <Link to={"/actor/" + movie.actor.name}>
-                <span className="directorName">{movie.actor.name}</span>
+                <span className={styles.directorName}>{movie.actor.name}</span>
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="description">
-          <span className="plot">Plot: </span>
+        <div className={styles.description}>
+          <span className={styles.plot}>Plot: </span>
           <span>{movie.description}</span>
         </div>
 
-        <div className="MovieViewButton">
+        <div className={styles.MovieViewButton}>
           <Link to={"/"}>
             <Button variant="primary">Back</Button>
           </Link>

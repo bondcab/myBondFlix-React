@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import styles from "./AccountInfo.module.css";
 
 function AccountInfo(storedUser) {
   const username = storedUser.storedUser.Username;
@@ -18,8 +19,8 @@ function AccountInfo(storedUser) {
   }, []);
 
   return (
-    <div className="AccountInformation">
-      <h1 className="accountInfoHeading">Account Information</h1>
+    <div>
+      <h1 className={styles.accountInfoHeading}>Account Information</h1>
       <img
         alt="profilePicture"
         src={
@@ -27,18 +28,18 @@ function AccountInfo(storedUser) {
             ? "/images/pic_placeholder.jpeg"
             : `https://mybondflix-images.s3.eu-central-1.amazonaws.com/resized-images/${storagePic}`
         }
-        className="profilePic"
+        className={styles.profilePic}
       />
       <p>Username: {username}</p>
       <p>Email: {email} </p>
       <p>Birthday: {`${birthdayDay}/${birthdayMonth}/${birthdayYear}`}</p>
       <br />
       <br />
-      <Link to={"/profile/updateinfo"} className="UpdateLink">
-        <p className="UpdateInformationLink">Update Information</p>
+      <Link to={"/profile/updateinfo"} className={styles.UpdateLink}>
+        <p className={styles.UpdateInformationLink}>Update Information</p>
       </Link>
-      <Link to={"/profile/delete"} className="DeleteLink">
-        <p className="DeleteAccount">Delete Account</p>
+      <Link to={"/profile/delete"} className={styles.DeleteLink}>
+        <p className={styles.DeleteAccount}>Delete Account</p>
       </Link>
     </div>
   );

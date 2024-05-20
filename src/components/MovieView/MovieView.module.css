@@ -1,0 +1,54 @@
+.MovieViewTitle {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.contentContainer {
+  display: flex;
+  padding-left: 5%;
+  padding-top: 3%;
+  display: flex;
+  align-content: center;
+  font-size: medium;
+}
+
+.MovieViewText {
+  margin-left: 17%;
+  margin-right: 25%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 50%;
+}
+
+.plot {
+  font-weight: bold;
+}
+
+.description {
+  margin-top: 8%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.MovieViewButton {
+  margin-top: 12%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.directorName {
+  font-weight: normal;
+}
+
+.directorName:hover {
+  font-weight: bold;
+}
+
+.movieImage {
+  border-radius: 10px;
+}

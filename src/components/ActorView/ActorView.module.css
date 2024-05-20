@@ -1,0 +1,31 @@
+.actorImage {
+  border-radius: 10px;
+}
+
+.actorViewText {
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 50%;
+}
+
+.actorImage {
+  border-radius: 10px;
+}
+
+.actorViewTitle {
+  font-weight: bold;
+}
+
+.actorViewButton {
+  margin-top: 12%;
+  display: flex;
+  justify-content: flex-end;
+}

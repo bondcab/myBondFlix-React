@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
+import styles from "./UpdateInfo.module.css";
 
 function UpdateInfo({ changePic }) {
   const [username, setUsername] = useState("");
@@ -108,9 +109,9 @@ function UpdateInfo({ changePic }) {
   ("/images/pic_placeholder.jpeg");
 
   return (
-    <Col md={4} className="UpdateInfo">
-      <h1 className="UpdateInfoHeading">Update Account Information</h1>
-      <div className="profilePicContainer">
+    <Col md={4} className={styles.UpdateInfo}>
+      <h1 className={styles.UpdateInfoHeading}>Update Account Information</h1>
+      <div className={styles.profilePicContainer}>
         <img
           alt="profilePicture"
           src={
@@ -118,15 +119,15 @@ function UpdateInfo({ changePic }) {
               ? `https://mybondflix-images.s3.eu-central-1.amazonaws.com/resized-images/${storagePic}`
               : "/images/pic_placeholder.jpeg"
           }
-          className="profilePic"
+          className={styles.profilePic}
         />
-        <button className="profilePicButton" onClick={handlePicClick}>
+        <button className={styles.profilePicButton} onClick={handlePicClick}>
           Change Pic
         </button>
       </div>
-      <div className="chooseFileContainer">
+      <div className={styles.chooseFileContainer}>
         {picClick ? (
-          <div className="choosePicContainer">
+          <div className={styles.choosePicContainer}>
             <form onSubmit={handlePicSubmit}>
               <input type="file" accept="image/*" onChange={handleFileChange} />
               <button type="submit">Upload</button>
@@ -136,7 +137,7 @@ function UpdateInfo({ changePic }) {
       </div>
 
       <div className="UpdateFormParent">
-        <Form onSubmit={handleSubmit} className="UpdateForm">
+        <Form onSubmit={handleSubmit} className={styles.UpdateForm}>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
             <Form.Control
@@ -177,17 +178,17 @@ function UpdateInfo({ changePic }) {
               required
             />
           </Form.Group>
-          <Form.Group className="UpdateButtonParent">
+          <Form.Group className={styles.UpdateButtonParent}>
             <Button
-              className="AccountUpdateButton"
+              className={styles.AccountUpdateButton}
               variant="primary"
               type="submit"
             >
               Update
             </Button>
           </Form.Group>
-          <Link to={"/profile/"} className="UpdateBackParent">
-            <p className="UpdateBack">Go Back</p>
+          <Link to={"/profile/"} className={styles.UpdateBackParent}>
+            <p className={styles.UpdateBack}>Go Back</p>
           </Link>
         </Form>
       </div>

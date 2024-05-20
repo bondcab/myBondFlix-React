@@ -2,6 +2,7 @@ import Col from "react-bootstrap/Col";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import styles from "./ActorView.module.css";
 
 function ActorView({ movies }) {
   const { actorName } = useParams();
@@ -18,27 +19,27 @@ function ActorView({ movies }) {
   return (
     <Col md={9}>
       <div>
-        <div className="directorImageContainer">
+        <div>
           <img
             src={movie.actor.ActorImage}
-            className="w-100 directorImage"
+            className={styles.actorImage}
             alt={movie.Title}
           />
         </div>
-        <div className="contentContainer">
-          <div className="DirectorViewText">
+        <div>
+          <div className={styles.actorViewText}>
             <div>
-              <span className="DirectorViewTitle">{movie.actor.name}</span>
+              <span className={styles.actorViewTitle}>{movie.actor.name}</span>
             </div>
           </div>
         </div>
 
-        <div className="description">
-          <span className="plot">Bio: </span>
+        <div>
+          <span>Bio: </span>
           <span>{movie.actor.bio}</span>
         </div>
 
-        <div className="MovieViewButton">
+        <div className={styles.actorViewButton}>
           <Link to={"/"}>
             <Button variant="primary">Back</Button>
           </Link>

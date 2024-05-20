@@ -1,4 +1,4 @@
-.loginViewContainer {
+.signupViewContainer {
   width: 100vw;
   height: 100vh;
   position: absolute;
@@ -6,7 +6,7 @@
   justify-content: flex-end;
 }
 
-.loginSection {
+.signupSection {
   width: 500px;
   background-color: white;
   height: 550px;
@@ -15,19 +15,29 @@
   margin-right: 20%;
 }
 
-.loginHeadingContainer {
+.signupFormInput {
+  transform: translateX(-60px);
+  height: 200px;
+  flex-wrap: wrap;
+}
+
+.signupHeadingContainer {
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 70px;
 }
 
-.loginForm {
+.signupForm {
   display: flex;
   justify-content: center;
   height: 70%;
   margin-top: 5px;
   margin-right: 20px;
+}
+
+.signupButton {
+  margin-top: 19px;
 }
 
 .bondLogo {
@@ -36,28 +46,4 @@
   margin-top: 65px;
   rotate: 270deg;
   transform: translate(-20px, -10px);
-}
-
-.loginTitle {
-  border: solid red 3px;
-}
-
-@media (max-width: 400px) {
-  .bondLogo {
-    border: solid green;
-    display: none;
-  }
-
-  .loginFormInput {
-    transform: translateX(0px);
-  }
-}
-
-.loginFormInput {
-  transform: translateX(-60px);
-  height: 200px;
-  flex-wrap: wrap;
-}
-.LoginButton {
-  margin-top: 19px;
 }

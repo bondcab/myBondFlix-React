@@ -1,0 +1,36 @@
+.UpdateInfo {
+  width: 100%;
+}
+
+.AccountUpdateButton {
+  margin-top: 20px;
+}
+
+.UpdateButtonParent {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.UpdateForm {
+  width: 50%;
+}
+
+.UpdateFormParent {
+  display: flex;
+  justify-content: center;
+}
+
+.UpdateInfoHeading {
+  text-align: center;
+}
+
+.UpdateBack {
+  font-size: 90%;
+  color: green;
+  margin-top: 20%;
+}
+
+.UpdateBackParent {
+  display: flex;
+  justify-content: flex-end;
+}
