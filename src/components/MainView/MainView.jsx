@@ -90,6 +90,10 @@ export const MainView = () => {
       });
   }, [token]);
 
+  const [defaultPic, setDefaultPic] = useState(true);
+
+  const [changePic, setChangePic] = useState(false);
+
   return (
     <BrowserRouter>
       <NavigationBar
@@ -236,7 +240,7 @@ export const MainView = () => {
                 ) : (
                   <>
                     <Col md={6}>
-                      <UpdateInfo />
+                      <UpdateInfo changePic={changePic} />
                     </Col>
                   </>
                 )}
