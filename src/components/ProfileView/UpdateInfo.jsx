@@ -1,17 +1,27 @@
 //Signup View Component
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 
-function UpdateInfo() {
+function UpdateInfo({ changePic }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
+  const [picClick, setPicClick] = useState(false);
+  const [picChanged, setPicChanged] = useState(false);
+  const [imageName, setImageName] = useState(false);
+  const storagePic = localStorage.getItem("Image Name");
+
+  useEffect(() => {
+    if (storagePic !== null) {
+      setPicChanged(true);
+    }
+  }, []);
 
   const token = storedToken;
 
@@ -26,7 +36,7 @@ function UpdateInfo() {
     };
 
     fetch(
-      "https://bond-flix-9c1709905a90.herokuapp.com/users/" +
+      "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com:8080/users/" +
         storedUser.Username,
       {
         method: "PUT",
@@ -46,9 +56,85 @@ function UpdateInfo() {
     });
   };
 
+  function handlePicClick() {
+    console.log("Change profile pic button clicked");
+    setPicClick(true);
+  }
+
+  const [file, setFile] = useState(null);
+
+  function handleFileChange(event) {
+    const selectedFile = event.target.files[0];
+    console.log("Selected file: ", selectedFile);
+    setFile(selectedFile);
+    localStorage.setItem("Image Name", selectedFile.name);
+  }
+
+  async function handlePicSubmit(event) {
+    event.preventDefault();
+
+    if (file !== null) {
+      const formData = new FormData();
+      formData.append("image", file);
+
+      try {
+        const response = await fetch(
+          "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com:8080/images",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to upload image");
+        }
+        if (response.ok) {
+          console.log("Image uploaded successfully");
+          console.log("Response: ", response);
+          setPicClick(false);
+          setPicChanged(true);
+          const picName = localStorage.getItem("Image Name");
+          console.log("local storage pic name: ", picName);
+          setImageName(picName);
+        }
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        alert("An error occurred: " + error.message);
+      }
+    }
+  }
+
+  ("/images/pic_placeholder.jpeg");
+
   return (
     <Col md={4} className="UpdateInfo">
       <h1 className="UpdateInfoHeading">Update Account Information</h1>
+      <div className="profilePicContainer">
+        <img
+          alt="profilePicture"
+          src={
+            picChanged
+              ? `https://mybondflix-images.s3.eu-central-1.amazonaws.com/resized-images/${storagePic}`
+              : "/images/pic_placeholder.jpeg"
+          }
+          className="profilePic"
+        />
+        <button className="profilePicButton" onClick={handlePicClick}>
+          Change Pic
+        </button>
+      </div>
+      <div className="chooseFileContainer">
+        {picClick ? (
+          <div className="choosePicContainer">
+            <form onSubmit={handlePicSubmit}>
+              <input type="file" accept="image/*" onChange={handleFileChange} />
+              <button type="submit">Upload</button>
+            </form>
+          </div>
+        ) : null}
+      </div>
+
       <div className="UpdateFormParent">
         <Form onSubmit={handleSubmit} className="UpdateForm">
           <Form.Group controlId="formUsername">

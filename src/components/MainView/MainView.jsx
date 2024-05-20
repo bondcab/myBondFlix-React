@@ -51,9 +51,12 @@ export const MainView = () => {
       return;
     }
 
-    fetch("https://bond-flix-9c1709905a90.herokuapp.com/movies", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    fetch(
+      "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com:8080/movies",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         let dataReordered = data.sort(
@@ -86,6 +89,10 @@ export const MainView = () => {
         setOriginalMovies(moviesFromApi);
       });
   }, [token]);
+
+  const [defaultPic, setDefaultPic] = useState(true);
+
+  const [changePic, setChangePic] = useState(false);
 
   return (
     <BrowserRouter>
@@ -233,7 +240,7 @@ export const MainView = () => {
                 ) : (
                   <>
                     <Col md={6}>
-                      <UpdateInfo />
+                      <UpdateInfo changePic={changePic} />
                     </Col>
                   </>
                 )}

@@ -1,0 +1,13 @@
+.loginHeadingContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.loginForm {
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
+  width: 100%;
+  height: 70vh;
+}
