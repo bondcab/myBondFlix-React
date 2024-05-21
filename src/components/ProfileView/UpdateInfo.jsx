@@ -109,90 +109,107 @@ function UpdateInfo({ changePic }) {
   ("/images/pic_placeholder.jpeg");
 
   return (
-    <Col md={4} className={styles.UpdateInfo}>
-      <h1 className={styles.UpdateInfoHeading}>Update Account Information</h1>
-      <div className={styles.profilePicContainer}>
-        <img
-          alt="profilePicture"
-          src={
-            picChanged
-              ? `https://mybondflix-images.s3.eu-central-1.amazonaws.com/resized-images/${storagePic}`
-              : "/images/pic_placeholder.jpeg"
-          }
-          className={styles.profilePic}
-        />
-        <button className={styles.profilePicButton} onClick={handlePicClick}>
-          Change Pic
-        </button>
-      </div>
-      <div className={styles.chooseFileContainer}>
-        {picClick ? (
-          <div className={styles.choosePicContainer}>
-            <form onSubmit={handlePicSubmit}>
-              <input type="file" accept="image/*" onChange={handleFileChange} />
-              <button type="submit">Upload</button>
-            </form>
+    <div className={styles.updateViewContainer}>
+      <div>
+        <div className={styles.updateInfoContainer}>
+          <div className={styles.updateInfo}>
+            <Col md={12} className={styles.UpdateInfo}>
+              <h1 className={styles.UpdateInfoHeading}>
+                Update Account Information
+              </h1>
+              {/* <div className={styles.profilePicContainer}>
+                <img
+                  alt="profilePicture"
+                  src={
+                    picChanged
+                      ? `https://mybondflix-images.s3.eu-central-1.amazonaws.com/resized-images/${storagePic}`
+                      : "/images/pic_placeholder.jpeg"
+                  }
+                  className={styles.profilePic}
+                />
+                <button
+                  className={styles.profilePicButton}
+                  onClick={handlePicClick}
+                >
+                  Change Pic
+                </button>
+              </div> */}
+              <div className={styles.chooseFileContainer}>
+                {picClick ? (
+                  <div className={styles.choosePicContainer}>
+                    <form onSubmit={handlePicSubmit}>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                      />
+                      <button type="submit">Upload</button>
+                    </form>
+                  </div>
+                ) : null}
+              </div>
+
+              <div className={styles.UpdateFormParent}>
+                <Form onSubmit={handleSubmit} className={styles.UpdateForm}>
+                  <Form.Group controlId="formUsername">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      required
+                      minLength="3"
+                    ></Form.Control>
+                  </Form.Group>
+
+                  <Form.Group controlId="formPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formEmail">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBirthday">
+                    <Form.Label>Birthday:</Form.Label>
+                    <Form.Control
+                      type="date"
+                      value={birthday}
+                      onChange={(e) => setBirthday(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group className={styles.UpdateButtonParent}>
+                    <Button
+                      className={styles.AccountUpdateButton}
+                      variant="primary"
+                      type="submit"
+                    >
+                      Update
+                    </Button>
+                  </Form.Group>
+                  <Link to={"/profile/"} className={styles.UpdateBackParent}>
+                    <p className={styles.UpdateBack}>Go Back</p>
+                  </Link>
+                </Form>
+              </div>
+            </Col>
           </div>
-        ) : null}
+        </div>
       </div>
-
-      <div className="UpdateFormParent">
-        <Form onSubmit={handleSubmit} className={styles.UpdateForm}>
-          <Form.Group controlId="formUsername">
-            <Form.Label>Username:</Form.Label>
-            <Form.Control
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              minLength="3"
-            ></Form.Control>
-          </Form.Group>
-
-          <Form.Group controlId="formPassword">
-            <Form.Label>Password:</Form.Label>
-            <Form.Control
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Form.Group controlId="formEmail">
-            <Form.Label>Email:</Form.Label>
-            <Form.Control
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Form.Group controlId="formBirthday">
-            <Form.Label>Birthday:</Form.Label>
-            <Form.Control
-              type="date"
-              value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
-              required
-            />
-          </Form.Group>
-          <Form.Group className={styles.UpdateButtonParent}>
-            <Button
-              className={styles.AccountUpdateButton}
-              variant="primary"
-              type="submit"
-            >
-              Update
-            </Button>
-          </Form.Group>
-          <Link to={"/profile/"} className={styles.UpdateBackParent}>
-            <p className={styles.UpdateBack}>Go Back</p>
-          </Link>
-        </Form>
-      </div>
-    </Col>
+    </div>
   );
 }
 

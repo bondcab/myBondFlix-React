@@ -18,8 +18,27 @@
 
 .UpdateLink {
   text-decoration: none;
+  font-weight: bold;
 }
 
 .DeleteLink {
   text-decoration: none;
+  font-weight: bold;
+}
+
+.accountInfoContainer {
+  background-color: white;
+  margin-top: 50px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.accountInfo {
+  width: 400px;
+}
+
+.bold {
+  font-weight: bold;
 }

@@ -57,7 +57,7 @@ export const LoginView = ({ onLoggedIn, user }) => {
           />
 
           <Form onSubmit={handleSubmit} className={styles.loginFormInput}>
-            <GoogleLinkButton />
+            {/* <GoogleLinkButton /> */}
             <Form.Group controlId="formUsername">
               <Form.Label>Username:</Form.Label>
               <Form.Control

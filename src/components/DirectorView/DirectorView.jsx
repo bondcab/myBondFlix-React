@@ -16,38 +16,83 @@ function DirectorView({ movies }) {
     return <Col md={9}>Director not found</Col>;
   }
 
+  const imageStyle = {
+    backgroundImage: `url(${movie.director.DirectorImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center top",
+  };
+
+  console.log(movie.director.DirectorImage);
+
   return (
-    <Col md={9}>
-      <div>
-        <div>
-          <img
-            src={movie.director.DirectorImage}
-            className={styles.directorImage}
-            alt={movie.Title}
-          />
-        </div>
-        <div>
-          <div className={styles.directorViewText}>
+    <div>
+      <div className={styles.directorViewContainer}>
+        <div className={styles.directorView}>
+          <Col md={12}>
             <div>
-              <span className={styles.directorViewTitle}>
-                {movie.director.name}
-              </span>
+              <div>
+                <div className={styles.image} style={imageStyle}></div>
+              </div>
+              <div className={styles.contentContainer}>
+                <div className={styles.directorTextContainer}>
+                  <div className={styles.directorViewText}>
+                    <div>
+                      <span className={styles.directorViewTitle}>
+                        {movie.director.name}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.description}>
+                <span className={styles.plot}>Bio: </span>
+                <span>{movie.director.bio}</span>
+              </div>
+              <div className={styles.directorViewButton}>
+                <Link to={"/"}>
+                  <Button variant="primary">Back</Button>
+                </Link>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div>
-          <span>Bio: </span>
-          <span>{movie.director.bio}</span>
-        </div>
-
-        <div className={styles.directorViewButton}>
-          <Link to={"/"}>
-            <Button variant="primary">Back</Button>
-          </Link>
+          </Col>
         </div>
       </div>
-    </Col>
+      <div className={styles.lowerSection}></div>
+    </div>
+
+    // <div>
+    //   <div className={styles.directorViewContainer}>
+    //     <div className={styles.directorView}>
+    //       <Col md={12}>
+    //         <div>
+    //           <div>
+    //             <div className={styles.image} style={imageStyle}></div>
+    //           </div>
+    //           <div>
+    //             <div className={styles.directorViewText}>
+    //               <div>
+    //                 <span className={styles.directorViewTitle}>
+    //                   {movie.director.name}
+    //                 </span>
+    //               </div>
+    //             </div>
+    //           </div>
+
+    //           <div>
+    //             <span>Bio: </span>
+    //             <span>{movie.director.bio}</span>
+    //           </div>
+
+    //           <div className={styles.directorViewButton}>
+    //             <Link to={"/"}>
+    //               <Button variant="primary">Back</Button>
+    //             </Link>
+    //           </div>
+    //         </div>
+    //       </Col>
+    //     </div>
+    //   </div>
+    // </div>
   );
 }
 

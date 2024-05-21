@@ -57,6 +57,7 @@
   transform: translateX(-60px);
   height: 200px;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 .LoginButton {
   margin-top: 19px;

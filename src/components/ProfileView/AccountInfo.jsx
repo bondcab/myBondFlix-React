@@ -19,28 +19,39 @@ function AccountInfo(storedUser) {
   }, []);
 
   return (
-    <div>
-      <h1 className={styles.accountInfoHeading}>Account Information</h1>
-      <img
-        alt="profilePicture"
-        src={
-          !profilePic
-            ? "/images/pic_placeholder.jpeg"
-            : `https://mybondflix-images.s3.eu-central-1.amazonaws.com/resized-images/${storagePic}`
-        }
-        className={styles.profilePic}
-      />
-      <p>Username: {username}</p>
-      <p>Email: {email} </p>
-      <p>Birthday: {`${birthdayDay}/${birthdayMonth}/${birthdayYear}`}</p>
-      <br />
-      <br />
-      <Link to={"/profile/updateinfo"} className={styles.UpdateLink}>
-        <p className={styles.UpdateInformationLink}>Update Information</p>
-      </Link>
-      <Link to={"/profile/delete"} className={styles.DeleteLink}>
-        <p className={styles.DeleteAccount}>Delete Account</p>
-      </Link>
+    <div className={styles.accountInfoContainer}>
+      <div className={styles.accountInfo}>
+        <h1 className={styles.accountInfoHeading}>Account Information</h1>
+        {/* <img
+          alt="profilePicture"
+          src={
+            !profilePic
+              ? "/images/pic_placeholder.jpeg"
+              : `https://mybondflix-images.s3.eu-central-1.amazonaws.com/resized-images/${storagePic}`
+          }
+          className={styles.profilePic}
+        /> */}
+        <p>
+          Username: <span className={styles.bold}>{username}</span>
+        </p>
+        <p>
+          Email: <span className={styles.bold}>{email} </span>
+        </p>
+        <p>
+          Birthday:{" "}
+          <span
+            className={styles.bold}
+          >{`${birthdayDay}/${birthdayMonth}/${birthdayYear}`}</span>
+        </p>
+        <br />
+        <br />
+        <Link to={"/profile/updateinfo"} className={styles.UpdateLink}>
+          <p className={styles.UpdateInformationLink}>Update Information</p>
+        </Link>
+        <Link to={"/profile/delete"} className={styles.DeleteLink}>
+          <p className={styles.DeleteAccount}>Delete Account</p>
+        </Link>
+      </div>
     </div>
   );
 }

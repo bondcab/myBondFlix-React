@@ -13,7 +13,7 @@ function Favourites({ movies, favouriteFilms }) {
   return (
     <Row>
       <div className={styles.FavouritesHeading}>
-        <h1>Favourites</h1>
+        <h1 className={styles.heading}>Favourites</h1>
       </div>
       {favouriteFilmsArray.map((movie) => (
         <Col className="mb-5" key={movie.id} md={4}>

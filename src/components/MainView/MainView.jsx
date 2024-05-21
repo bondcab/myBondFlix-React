@@ -18,6 +18,7 @@ import styles from "./MainView.module.css";
 import { API_URL } from "../../config";
 import LandingPageImage from "./LandingPageImage";
 import "../../../src/";
+import { Container } from "react-bootstrap";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
@@ -108,214 +109,213 @@ export const MainView = () => {
 
       {!user ? <LandingPageImage /> : null}
 
-      <Row className={styles.mainContainer}>
-        <Routes>
-          <Route
-            path="/login"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col className="col-12">
-                    <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user);
-                        setToken(token);
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            <>
+              {user ? (
+                <Navigate to="/" />
+              ) : (
+                <Col className="col-12">
+                  <LoginView
+                    onLoggedIn={(user, token) => {
+                      setUser(user);
+                      setToken(token);
+                    }}
+                    user={user}
+                  />
+                </Col>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <>
+              {user ? (
+                <Navigate to="/" />
+              ) : (
+                <Col md={12}>
+                  <SignupView />
+                </Col>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" />
+              ) : (
+                <Col md={12}>
+                  <ProfileView
+                    movies={movies}
+                    storedUser={storedUser}
+                    user={user}
+                    favouriteFilms={favouriteFilms}
+                  />
+                </Col>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/:movieId"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : movies.length === 0 ? (
+                <Col> The list is empty!</Col>
+              ) : (
+                <Col md={8} className="centre">
+                  <MovieView
+                    movies={movies}
+                    storedUser={storedUser}
+                    user={user}
+                    token={token}
+                    favouriteFilms={favouriteFilms}
+                    setFavouriteFilms={setFavouriteFilms}
+                  />
+                </Col>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/favourites/:movieId"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : movies.length === 0 ? (
+                <Col> The list is empty!</Col>
+              ) : (
+                <Col md={8}>
+                  <MovieView movies={movies} favouriteFilms={favouriteFilms} />
+                </Col>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : (
+                <>
+                  <Container className={styles.moviesContainer}>
+                    <Row className={styles.mainContainer}>
+                      <div className={styles.searchParent}>
+                        <input
+                          type="text"
+                          placeholder=" Search"
+                          className={styles.searchBar}
+                          onChange={handleChange}
+                          value={search}
+                        />
+                      </div>
+
+                      {movies.map((movie) => (
+                        <Col className="mb-4" key={movie.id} md={3}>
+                          <MovieCard movie={movie} />
+                        </Col>
+                      ))}
+                    </Row>
+                  </Container>
+                </>
+              )}
+            </>
+          }
+        />
+
+        <Route
+          path="/profile/updateinfo"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : (
+                <>
+                  <Col md={6}>
+                    <UpdateInfo changePic={changePic} />
+                  </Col>
+                </>
+              )}
+            </>
+          }
+        />
+
+        <Route
+          path="/profile/delete"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : (
+                <>
+                  <Col md={6}>
+                    <DeleteAccount
+                      onLoggedOut={() => {
+                        setUser(null);
+                        setToken(null);
+                        localStorage.clear();
                       }}
-                      user={user}
                     />
                   </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={12}>
-                    <SignupView />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" />
-                ) : (
-                  <Col md={12}>
-                    <ProfileView
-                      movies={movies}
-                      storedUser={storedUser}
-                      user={user}
-                      favouriteFilms={favouriteFilms}
-                    />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/movies/:movieId"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col> The list is empty!</Col>
-                ) : (
-                  <Col md={8} className="centre">
-                    <MovieView
-                      movies={movies}
-                      storedUser={storedUser}
-                      user={user}
-                      token={token}
-                      favouriteFilms={favouriteFilms}
-                      setFavouriteFilms={setFavouriteFilms}
-                    />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/favourites/:movieId"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col> The list is empty!</Col>
-                ) : (
-                  <Col md={8}>
-                    <MovieView
-                      movies={movies}
-                      favouriteFilms={favouriteFilms}
-                    />
-                  </Col>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : (
-                  <>
-                    <div className={styles.searchParent}>
-                      <input
-                        type="text"
-                        placeholder=" Search"
-                        className={styles.searchBar}
-                        onChange={handleChange}
-                        value={search}
-                      />
-                    </div>
+                </>
+              )}
+            </>
+          }
+        />
 
-                    {movies.map((movie) => (
-                      <Col className="mb-4" key={movie.id} md={3}>
-                        <MovieCard movie={movie} />
-                      </Col>
-                    ))}
-                  </>
-                )}
-              </>
-            }
-          />
-
-          <Route
-            path="/profile/updateinfo"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : (
-                  <>
+        <Route
+          path="/director/:directorName"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : (
+                <>
+                  {movies.length > 0 ? (
                     <Col md={6}>
-                      <UpdateInfo changePic={changePic} />
+                      <DirectorView movies={movies} />
                     </Col>
-                  </>
-                )}
-              </>
-            }
-          />
-
-          <Route
-            path="/profile/delete"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : (
-                  <>
+                  ) : (
+                    <Col> Loading...</Col>
+                  )}
+                </>
+              )}
+            </>
+          }
+        />
+        <Route
+          path="/actor/:actorName"
+          element={
+            <>
+              {!user ? (
+                <Navigate to="/login" replace />
+              ) : (
+                <>
+                  {movies.length > 0 ? (
                     <Col md={6}>
-                      <DeleteAccount
-                        onLoggedOut={() => {
-                          setUser(null);
-                          setToken(null);
-                          localStorage.clear();
-                        }}
-                      />
+                      <ActorView movies={movies} />
                     </Col>
-                  </>
-                )}
-              </>
-            }
-          />
-
-          <Route
-            path="/director/:directorName"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : (
-                  <>
-                    {movies.length > 0 ? (
-                      <Col md={6}>
-                        <DirectorView movies={movies} />
-                      </Col>
-                    ) : (
-                      <Col> Loading...</Col>
-                    )}
-                  </>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/actor/:actorName"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : (
-                  <>
-                    {movies.length > 0 ? (
-                      <Col md={6}>
-                        <ActorView movies={movies} />
-                      </Col>
-                    ) : (
-                      <Col> Loading...</Col>
-                    )}
-                  </>
-                )}
-              </>
-            }
-          />
-        </Routes>
-      </Row>
+                  ) : (
+                    <Col> Loading...</Col>
+                  )}
+                </>
+              )}
+            </>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 };
