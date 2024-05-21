@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import styles from "./DeleteAccount.module.css";
+import { API_URL } from "../../config";
 
 function DeleteAccount({ onLoggedOut }) {
   const [username, setUsername] = useState("");
@@ -20,17 +21,13 @@ function DeleteAccount({ onLoggedOut }) {
     event.preventDefault();
 
     if (username === storedUser.Username && confirm === "DELETE") {
-      fetch(
-        "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com:8080/users/" +
-          storedUser.Username,
-        {
-          method: "DELETE",
+      fetch(API_URL + "/users/" + storedUser.Username, {
+        method: "DELETE",
 
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      ).then((response) => {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((response) => {
         if (response.ok) {
           alert("Account Deleted");
           window.location.reload();

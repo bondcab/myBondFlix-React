@@ -5,13 +5,14 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import styles from "./UpdateInfo.module.css";
+import { API_URL } from "../../config";
 
 function UpdateInfo({ changePic }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
-  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedUser = JSON.parse(localStorage.getItem("currentUsername"));
   const storedToken = localStorage.getItem("token");
   const [picClick, setPicClick] = useState(false);
   const [picChanged, setPicChanged] = useState(false);
@@ -36,21 +37,18 @@ function UpdateInfo({ changePic }) {
       DOB: birthday,
     };
 
-    fetch(
-      "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com:8080/users/" +
-        storedUser.Username,
-      {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    ).then((response) => {
+    fetch(API_URL + "/users/" + storedUser, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((response) => {
       if (response.ok) {
         alert("Account Information updated");
         window.location.reload();
+        localStorage.setItem("currentUsername", username);
       } else {
         alert("Account Information update failed");
       }
@@ -79,13 +77,10 @@ function UpdateInfo({ changePic }) {
       formData.append("image", file);
 
       try {
-        const response = await fetch(
-          "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com:8080/images",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
+        const response = await fetch(API_URL + "/images", {
+          method: "POST",
+          body: formData,
+        });
 
         if (!response.ok) {
           throw new Error("Failed to upload image");

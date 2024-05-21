@@ -13,6 +13,19 @@
   border-radius: 20%;
   align-self: center;
   margin-right: 20%;
+  transform: translateY(-50px);
+}
+
+@media (max-width: 600px) {
+  .signupViewContainer {
+    justify-content: center;
+  }
+
+  .signupSection {
+    margin-right: 0%;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 }
 
 .signupFormInput {
