@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import styles from "./MovieView.module.css";
+import { API_URL } from "../../config";
 
 export const MovieView = ({
   movies,
@@ -17,11 +19,7 @@ export const MovieView = ({
   const [isFavourited, setIsFavourited] = useState(false);
   let [favouriteIconColour, setIconColour] = useState("lightgrey");
   let movieID = encodeURIComponent(movie.id);
-  let url =
-    "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com/users/" +
-    username +
-    "/movies/" +
-    movieID;
+  let url = API_URL + "/users/" + username + "/movies/" + movieID;
 
   if (favouriteFilms.includes(movieID)) {
     favouriteIconColour = "#132043";
@@ -60,66 +58,82 @@ export const MovieView = ({
     }
   }
 
+  const imageStyle = {
+    backgroundImage: `url(${movie.imageUrl})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  };
+
   return (
-    <Col md={9}>
-      <div>
-        <div>
-          <img
-            src={movie.imageUrl}
-            className="w-100 movieImage"
-            alt={movie.Title}
-          />
-        </div>
-        <div className="contentContainer">
-          <div className="favouriteIcon">
-            <svg
-              onClick={filmFavourited}
-              onMouseOver={mouseOver}
-              onMouseOut={mouseOut}
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              fill={favouriteIconColour}
-              class="bi"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-              />
-            </svg>
-          </div>
-
-          <div className="MovieViewText">
+    <div>
+      <div className={styles.movieViewContainer}>
+        <div className={styles.movieView}>
+          <Col md={12}>
             <div>
-              <span className="MovieViewTitle">{movie.title}</span>
-            </div>
-            <div>
-              <span>Director: </span>
-              <Link to={"/director/" + movie.director.name}>
-                <span className="directorName">{movie.director.name}</span>
-              </Link>
-            </div>
-            <div>
-              <span>Actor: </span>
-              <Link to={"/actor/" + movie.actor.name}>
-                <span className="directorName">{movie.actor.name}</span>
-              </Link>
-            </div>
-          </div>
-        </div>
+              <div>
+                <div className={styles.image} style={imageStyle}></div>
+              </div>
+              <div className={styles.contentContainer}>
+                <div className={styles.favouriteIcon}>
+                  <svg
+                    onClick={filmFavourited}
+                    onMouseOver={mouseOver}
+                    onMouseOut={mouseOut}
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="40"
+                    height="40"
+                    fill={favouriteIconColour}
+                    class="bi"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                    />
+                  </svg>
+                </div>
+                <div className={styles.MovieTextContainer}>
+                  <div className={styles.MovieViewText}>
+                    <div>
+                      <span className={styles.MovieViewTitle}>
+                        {movie.title}
+                      </span>
+                    </div>
+                    <div>
+                      <span>Director: </span>
+                      <Link to={"/director/" + movie.director.name}>
+                        <span className={styles.directorName}>
+                          {movie.director.name}
+                        </span>
+                      </Link>
+                    </div>
+                    <div>
+                      <span>Actor: </span>
+                      <Link to={"/actor/" + movie.actor.name}>
+                        <span className={styles.directorName}>
+                          {movie.actor.name}
+                        </span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        <div className="description">
-          <span className="plot">Plot: </span>
-          <span>{movie.description}</span>
-        </div>
+              <div className={styles.description}>
+                <span className={styles.plot}>Plot: </span>
+                <span>{movie.description}</span>
+              </div>
 
-        <div className="MovieViewButton">
-          <Link to={"/"}>
-            <Button variant="primary">Back</Button>
-          </Link>
+              <div className={styles.MovieViewButton}>
+                <Link to={"/"}>
+                  <Button variant="primary">Back</Button>
+                </Link>
+              </div>
+            </div>
+          </Col>
         </div>
       </div>
-    </Col>
+      <div className={styles.lowerSection}></div>
+    </div>
   );
 };

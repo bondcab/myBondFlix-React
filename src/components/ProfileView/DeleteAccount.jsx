@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
+import styles from "./DeleteAccount.module.css";
+import { API_URL } from "../../config";
 
 function DeleteAccount({ onLoggedOut }) {
   const [username, setUsername] = useState("");
@@ -19,17 +21,13 @@ function DeleteAccount({ onLoggedOut }) {
     event.preventDefault();
 
     if (username === storedUser.Username && confirm === "DELETE") {
-      fetch(
-        "http://load-balancer-01-1868401869.eu-central-1.elb.amazonaws.com:8080/users/" +
-          storedUser.Username,
-        {
-          method: "DELETE",
+      fetch(API_URL + "/users/" + storedUser.Username, {
+        method: "DELETE",
 
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      ).then((response) => {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((response) => {
         if (response.ok) {
           alert("Account Deleted");
           window.location.reload();
@@ -44,10 +42,10 @@ function DeleteAccount({ onLoggedOut }) {
   };
 
   return (
-    <Col md={4} className="UpdateInfo">
-      <h1 className="UpdateInfoHeading">Delete Account</h1>
-      <div className="UpdateFormParent">
-        <Form onSubmit={handleSubmit} className="UpdateForm">
+    <Col md={4} className={styles.deleteInfo}>
+      <h1 className={deleteInfoHeading}>Delete Account</h1>
+      <div className={styles.deleteFormParent}>
+        <Form onSubmit={handleSubmit} className={styles.deleteForm}>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
             <Form.Control
@@ -59,17 +57,17 @@ function DeleteAccount({ onLoggedOut }) {
             ></Form.Control>
           </Form.Group>
 
-          <Form.Group className="UpdateButtonParent">
+          <Form.Group className={styles.deleteButtonParent}>
             <Button
-              className="AccountUpdateButton"
+              className={styles.deleteUpdateButton}
               variant="primary"
               type="submit"
             >
               Delete
             </Button>
           </Form.Group>
-          <Link to={"/profile/"} className="UpdateBackParent">
-            <p className="UpdateBack">Go Back</p>
+          <Link to={"/profile/"} className={styles.deleteParent}>
+            <p className={styles.deleteBack}>Go Back</p>
           </Link>
         </Form>
       </div>

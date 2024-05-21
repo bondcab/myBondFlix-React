@@ -1,0 +1,106 @@
+.UpdateInfo {
+  width: 100%;
+}
+
+.AccountUpdateButton {
+  margin-top: 20px;
+}
+
+.UpdateButtonParent {
+  display: flex;
+  justify-content: center;
+}
+
+.UpdateForm {
+  width: 50%;
+}
+
+.UpdateFormParent {
+  display: flex;
+  justify-content: center;
+}
+
+.UpdateInfoHeading {
+  text-align: center;
+}
+
+.UpdateBack {
+  font-size: 90%;
+  color: green;
+  margin-top: 20%;
+  font-weight: bold;
+}
+
+.UpdateBackParent {
+  display: flex;
+  justify-content: center;
+}
+
+.updateInfoContainer {
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  width: 600px;
+}
+
+.updateInfo {
+  width: 400px;
+}
+
+.updateViewContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.profilePic {
+  width: 150px;
+  margin-bottom: 30px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.profilePicContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profilePicButton {
+  border: none;
+  height: 30px;
+  transform: translateY(-30px);
+  background-color: #132043;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.profilePicButton:hover {
+  transform: translateY(-30px) scale(105%);
+  cursor: pointer;
+}
+
+.choosePicContainer {
+  border-radius: 18px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.UpdateInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.chooseFileContainer {
+  display: flex;
+  justify-content: center;
+}

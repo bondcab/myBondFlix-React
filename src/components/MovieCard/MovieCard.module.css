@@ -1,0 +1,53 @@
+a {
+  text-decoration: none !important;
+}
+
+.movieCard {
+  max-height: 100%;
+  opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: solid rgba(0, 0, 0, 0.294) 1px;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.movieCard:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.expanded-card {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.hideCards {
+  opacity: 0;
+}
+
+.textCentre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  max-height: 80px;
+  min-height: 80px;
+}
+
+.textCentre a {
+  text-decoration: none;
+}
+
+.cardTitle {
+  text-decoration: none;
+}
+
+.imgMain {
+  height: 100%;
+  border-bottom: solid rgba(0, 0, 0, 0.294) 1px;
+}
+
+.centre {
+  display: flex;
+  justify-content: center;
+}

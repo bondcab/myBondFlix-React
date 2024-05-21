@@ -1,0 +1,36 @@
+.deleteInfo {
+  width: 100%;
+}
+
+.deleteInfoHeading {
+  text-align: center;
+}
+
+.deleteFormParent {
+  display: flex;
+  justify-content: center;
+}
+
+.deleteFormParent {
+  display: flex;
+  justify-content: center;
+}
+
+.deleteInfoHeading {
+  text-align: center;
+}
+
+.deleteBack {
+  font-size: 90%;
+  color: green;
+  margin-top: 20%;
+}
+
+.deleteBackParent {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.deleteUpdateButton {
+  margin-top: 20px;
+}
